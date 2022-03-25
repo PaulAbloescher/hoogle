@@ -13,7 +13,7 @@ import General.Store
 import General.Store (storeRead)
 import General.Util
 import Input.Item
-import Network.HTTP.Client.Conduit (Response (responseBody))
+import Network.HTTP.Client.Conduit (Response (responseBody), Request (requestBody))
 import Network.HTTP.Simple
 import Query
 import Document
@@ -22,6 +22,12 @@ import qualified EvalItem as E (readEvalItems, EvalItem (docQuery, queryRes, doc
 import EvalItem (writeEvalItems, EvalItem (queryRes))
 import System.IO (withFile, IOMode (WriteMode, AppendMode))
 import System.Directory (doesFileExist)
+import Output.Items
+import Network.HTTP.Conduit (simpleHttp)
+import Data.List
+import Data.Aeson (decode)
+import Data.Binary (Word32)
+import Data.Maybe (fromMaybe)
 
 -- | Database containing Hoogle search data.
 newtype Database = Database StoreRead
