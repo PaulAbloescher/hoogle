@@ -1,0 +1,26 @@
+storageId;docQuery;docItem;sourceLink
+113142;function which can help me get rid of the last element of a list;init :: () => [a] -> [a];https://stackoverflow.com/questions/19802039
+122423;how to get the last element of a list in haskell;last :: () => [a] -> a;https://www.educative.io/edpresso/how-to-get-the-last-element-of-a-list-in-haskell
+58016;how to create infinitely repeating list in haskell;cycle :: () => [a] -> [a];https://stackoverflow.com/questions/2035432
+190170;how to remove a list's first element in haskell;tail :: () => [a] -> [a];https://www.educative.io/edpresso/how-to-remove-a-lists-first-element-in-haskell
+61284;parsing a json string in haskell;decode :: FromJSON a => ByteString -> Maybe a;https://stackoverflow.com/questions/6960820
+75029;how to serialize a parameterized type to json in haskell?;encode :: ToJSON a => a -> ByteString;https://stackoverflow.com/questions/26705381
+127890;skipping up to (but not including) a multi-char delimiter;lookAhead :: Parser i a -> Parser i a;https://stackoverflow.com/questions/30446223
+196468;capitalize all letters in a list string;toUpper :: Text -> Text;https://stackoverflow.com/questions/16404435
+61794;what is the proper way to marshall utf-8 encoded string to haskell text and back?;decodeUtf8 :: ByteString -> Text;https://stackoverflow.com/questions/34417462
+187193;how do you trim whitespace from the beginning and end of a string?;strip :: Text -> Text;https://stackoverflow.com/questions/6270324
+116940;check a string to see if it contains a smaller string;isInfixOf :: Text -> Text -> Bool;https://stackoverflow.com/questions/8748660
+190280;how can i get multiple nth elements in a list?;take :: () => Int -> [a] -> [a];https://stackoverflow.com/questions/71009626
+32375;fold [io bool] with (&&) in haskell?;andM :: Monad m => [m Bool] -> m Bool;https://stackoverflow.com/questions/71166469
+63411;is there any function to remove an element in a list?;delete :: Eq a => a -> [a] -> [a];https://stackoverflow.com/questions/71093973
+193720;Is there a way to limit the execution time for a given function?;timeout :: () => Int -> IO a -> IO (Maybe a);https://stackoverflow.com/questions/64866266
+158614;divide int to int and return int;quot :: Integral a => a -> a -> a;https://stackoverflow.com/questions/4359043
+118594;how to call the same function 'n' times?;iterate :: (a -> a) -> a -> [a];https://stackoverflow.com/questions/7423123
+86511;int32 to int in haskell;fromIntegral :: (Integral a, Num b) => a -> b;https://stackoverflow.com/questions/4880376
+146008;how to check if a list of booleans contains true?;or :: [Bool] -> Bool;https://stackoverflow.com/questions/19227191
+86573;extracting x from (just x) in a maybe;fromJust :: () => Maybe a -> a;https://stackoverflow.com/questions/33773155
+45390;is there a function in haskell that is the opposite of the ord function in data.char;chr :: Int -> Char;https://stackoverflow.com/questions/19281977
+2134;how to delete a sublist of a list in haskell;(\\) :: Eq a => [a] -> [a] -> [a];https://stackoverflow.com/questions/22484911
+212547;haskell string to list string split by whitespace;words :: String -> [String];https://stackoverflow.com/questions/57141325
+42399;obtaining only value component of a maybe in haskell;catMaybes :: [Maybe a] -> [a];https://stackoverflow.com/questions/34147296
+87467;store utf-8 encoding of a string in a bytestring;fromString :: String -> ByteString;https://stackoverflow.com/questions/14047190
