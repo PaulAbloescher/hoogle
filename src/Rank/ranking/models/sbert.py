@@ -7,7 +7,7 @@ class SBertModel(Model):
     def __init__(self, store: DocumentStore):
         super().__init__(store)
         self._model = SentenceTransformer('flax-sentence-embeddings/stackoverflow_mpnet-base', device='cuda')
-        self._corpus_embeddings = self._get_normalized_embeddings(self._store.read_corpus())
+        self._corpus_embeddings = self._get_store_embeddings(store)
 
     def score(self, query, storage_ids):
         query_embedding = self._get_normalized_embeddings([query])
@@ -27,3 +27,6 @@ class SBertModel(Model):
         embeddings = self._model.encode(sentences, convert_to_tensor=True).to('cuda')
         embeddings = util.normalize_embeddings(embeddings)
         return embeddings
+
+    def _get_store_embeddings(self, store: DocumentStore):
+        return self._get_normalized_embeddings(store.read_corpus())
