@@ -35,7 +35,7 @@ toDocument :: (TargetId, Target) -> Document
 toDocument (TargetId id, t) = Document id docContent' docItem' docType' package
   where
     unHTMLedTarget = unHTMLTarget t
-    docContent' = normalizedDocs unHTMLedTarget
+    docContent' = targetDocs t
     docItem' = strip $ fromMaybe "" $ getTypeSig $ targetItem unHTMLedTarget
     docType' = strip $ fromMaybe "" $ getTypeOfTypeSig $ targetItem unHTMLedTarget
     package = maybe "" fst (targetPackage unHTMLedTarget)
