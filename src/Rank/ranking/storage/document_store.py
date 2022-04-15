@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 from ranking.util import json_lines as jl
 
-
 class DocumentStore:
     def __init__(self, dataset_file) -> None:
         self._df = jl.read_dataset(dataset_file)
@@ -10,8 +9,7 @@ class DocumentStore:
         self._assert_that_grouped_storage_ids_are_overly_strict_monotonic()
 
     def get_storage_ids_for_hoogle_ids(self, hoogle_ids):
-        hoogle_ids = [
-            hoogle_id for hoogle_id in hoogle_ids if hoogle_id in self._df.index]
+        hoogle_ids = [hoogle_id for hoogle_id in hoogle_ids if hoogle_id in self._df.index]
         return self._df.loc[hoogle_ids].index.get_level_values('storageId').unique().values
 
     def get_hoogle_ids_for_storage_ids(self, storage_ids):

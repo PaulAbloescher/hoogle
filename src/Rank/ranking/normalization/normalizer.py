@@ -50,9 +50,10 @@ def normalize(text, stem=lemmatize, stop = []):
     return " ".join(tokens)
 
 def clean(text: str) -> str:
+    text = ' '.join(text.splitlines())
+    text = ' '.join(text.split()) # remove consecutive spaces
+    if not text: return ''
     doc = fromstring(text)
     etree.strip_elements(doc, 'pre')
     cleaned_text = doc.text_content()
-    cleaned_text = ' '.join(cleaned_text.splitlines())
-    cleaned_text = ' '.join(cleaned_text.split()) # remove consecutive spaces
     return cleaned_text.lower()
