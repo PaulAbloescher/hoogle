@@ -2,6 +2,7 @@ from ranking.models.model import Model
 from ranking.storage.document_store import DocumentStore
 from sentence_transformers import SentenceTransformer, util
 import torch
+import numpy as np
 
 class SBertModel(Model):
     def __init__(self, store: DocumentStore):
@@ -29,4 +30,8 @@ class SBertModel(Model):
         return embeddings
 
     def _get_store_embeddings(self, store: DocumentStore):
-        return self._get_normalized_embeddings(store.read_corpus())
+        corpus = store.read_corpus()
+        store_embeddings = self._get_normalized_embeddings(corpus)
+        store_embeddings[np.where(corpus=='')] = torch.tensor(np.zeros(self._model.get_sentence_embedding_dimension()), device='cuda').float()
+        return store_embeddings
+    
