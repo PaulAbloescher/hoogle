@@ -80,12 +80,12 @@ searchHoogle host q ts = do
   map (targetItem . unHTMLTarget) <$> lookupTargets ranked
 
 holeNameToQuery :: TypedHole -> String
-holeNameToQuery hole = splitUcWords holeName
+holeNameToQuery hole = splitSnakeCaseWords holeName
   where
     holeName = case th_hole hole of
       Nothing -> ""
       Just ho -> fromMaybe "" . stripPrefix "_" . occNameString $ hole_occ ho
-    splitUcWords = unwords . splitOn "_"
+    splitSnakeCaseWords = unwords . splitOn "_"
 
 defaultCandPlugin :: [CommandLineOption] -> TcRef HolePluginState -> CandPlugin
 defaultCandPlugin _ _ _ cands = return cands
