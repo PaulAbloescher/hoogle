@@ -80,12 +80,12 @@ searchHoogle host q ts = do
   map (targetItem . unHTMLTarget) <$> lookupTargets ranked
 
 holeNameToQuery :: TypedHole -> String
-holeNameToQuery hole = splitUcWords holeName
+holeNameToQuery hole = splitSnakeCaseWords holeName
   where
     holeName = case th_hole hole of
       Nothing -> ""
       Just ho -> fromMaybe "" . stripPrefix "_" . occNameString $ hole_occ ho
-    splitUcWords = unwords . splitOn "_"
+    splitSnakeCaseWords = unwords . splitOn "_"
 
 defaultCandPlugin :: [CommandLineOption] -> TcRef HolePluginState -> CandPlugin
 defaultCandPlugin _ _ _ cands = return cands
@@ -104,7 +104,7 @@ hoogleRerankPlugin _ ref hole hfs = do
       print $ "Type: " ++ searchP
       print $ "Query: " ++ holeQ
       searchHoogle host holeQ searchP
-  return $ (take 10 $ map (RawHoleFit . text . ("Hoogle: " ++)) res) ++ hfs
+  return $ (take 10 $ map (RawHoleFit . text . ("Ranked Hoogle: " ++)) res) ++ hfs
 
 plugin :: Plugin
 plugin = defaultPlugin {holeFitPlugin = holeFitP, pluginRecompile = purePlugin}

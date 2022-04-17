@@ -17,7 +17,7 @@ import Control.Monad.Extra (findM)
 
 exportDatabaseAsJsonl :: IO ()
 exportDatabaseAsJsonl = do
-  let defaultName = "raw.dump.jsonl"
+  let defaultName = "raw.complete.dump.jsonl"
   let possibleNames = defaultName : map (\n -> "(" ++ show n ++ ")" ++ " " ++ defaultName) [1..]
   Just notTakenName <- findM (fmap not . doesFileExist) possibleNames
   dump database notTakenName asJson
@@ -33,7 +33,7 @@ dumpDatabase n target f = do
   setLocaleEncoding utf8
   database <- defaultDatabaseLocation
   withSearch database $ \store -> do
-    let docs = map toDocument $ filter (not . null . targetDocs . snd) $ listItemsWithIds store
+    let docs = map toDocument $ listItemsWithIds store
     let docsToDump = case n of
           Nothing -> docs
           Just i -> take i docs

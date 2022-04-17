@@ -8,5 +8,8 @@ import Hoogle
 
 main :: IO ()
 main = do
-    hSetEncoding stdout utf8
-    hoogle =<< getArgs
+    [source, destination] <- getArgs
+    runEvaluation source destination
+    return ()
+    -- hSetEncoding stdout utf8
+    -- hoogle =<< getArgs

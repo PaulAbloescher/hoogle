@@ -3,7 +3,7 @@ from ranking.storage.document_store import DocumentStore
 from ranking.util import dataset_paths as dp
 import hug
 
-model = SBertModel.load("..\\notebooks\\evaluation\\SBert\\tokenized-sbert-model.pkl")
+model = SBertModel.load("..\\notebooks\\evaluation\\SBert\\complete-tokenized-sbert-model.pkl")
 store = DocumentStore(dp.tokenized_unique_functions_corpus)
 
 @hug.get()

@@ -67,15 +67,14 @@ putSearchDocs q = do
   res <- searchDocs q
   mapM_ (LBS.putStrLn . toJson) res
 
-runEvaluation :: FilePath -> IO ()
-runEvaluation f = do
-  let destination = ".\\missing-eval-result-test.jsonl"
+runEvaluation :: FilePath -> FilePath -> IO ()
+runEvaluation source destination = do
   destExists <- doesFileExist destination
   startAt <- if destExists then length . lines <$> readFile destination else return 0
   print startAt
   database <- defaultDatabaseLocation
   withSearch database $ \store -> do
-    items <- E.readEvalItems f
+    items <- E.readEvalItems source
     let enumeratedItems = drop startAt $ zip [1..] items
     let getTargetIds q = map (\(TargetId id, _) -> id) $ searchDatabase' store q
     let mode = if destExists then AppendMode else WriteMode
