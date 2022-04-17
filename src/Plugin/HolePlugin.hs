@@ -104,7 +104,7 @@ hoogleRerankPlugin _ ref hole hfs = do
       print $ "Type: " ++ searchP
       print $ "Query: " ++ holeQ
       searchHoogle host holeQ searchP
-  return $ (take 10 $ map (RawHoleFit . text . ("Hoogle: " ++)) res) ++ hfs
+  return $ (take 10 $ map (RawHoleFit . text . ("Ranked Hoogle: " ++)) res) ++ hfs
 
 plugin :: Plugin
 plugin = defaultPlugin {holeFitPlugin = holeFitP, pluginRecompile = purePlugin}
