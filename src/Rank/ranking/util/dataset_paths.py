@@ -12,9 +12,11 @@ tokenized_unique_functions_corpus = os.path.join(corpora_dir, 'tokenized-all-uni
 # Contains not only function but also package, module, etc. documentation 
 lemmatized_unique_sentences_corpus = os.path.join(corpora_dir, 'lemmatized-corpus.txt')
 tokenized_unique_sentences_corpus = os.path.join(corpora_dir, 'tokenized-corpus.txt')
+dup_tokenized_unique_sentences_corpus = os.path.join(corpora_dir, 'dup-tokenized-corpus.txt')
+dup_lemmatized_unique_sentences_corpus = os.path.join(corpora_dir, 'dup-lemmatized-corpus.txt')
 
 unique_functions_corpus = os.path.join(corpora_dir, 'all-unique-functions.jsonl')
-# raw_corpus = os.path.join(corpora_dir, 'no-code-ex-raw.dump.jsonl')
+raw_corpus = os.path.join(corpora_dir, 'no-code-ex-raw.dump.jsonl')
 
 # Evaluation
 lemmatized_tfidf_evaluation_set = os.path.join(evaluation_dir, 'lemmatized-eval-plain-hoogle-results.jsonl')
