@@ -36,8 +36,8 @@ toDocument (TargetId id, t) = Document id docContent' docItem' docType' package
   where
     unHTMLedTarget = unHTMLTarget t
     docContent' = targetDocs t
-    docItem' = strip $ fromMaybe "" $ getTypeSig $ targetItem unHTMLedTarget
-    docType' = strip $ fromMaybe "" $ getTypeOfTypeSig $ targetItem unHTMLedTarget
+    docItem' = targetItem unHTMLedTarget -- strip $ fromMaybe "" $ getTypeSig $ targetItem unHTMLedTarget
+    docType' = "" --strip $ fromMaybe "" $ getTypeOfTypeSig $ targetItem unHTMLedTarget
     package = maybe "" fst (targetPackage unHTMLedTarget)
 
 -- Same as toDocument but does not modify targetDocs.
@@ -46,13 +46,12 @@ toDocument' (TargetId id, t) = Document id docContent' docItem' docType' package
   where
     unHTMLedTarget = unHTMLTarget t
     docContent' = targetDocs t
-    docItem' = strip $ fromMaybe "" $ getTypeSig $ targetItem unHTMLedTarget
+    docItem' = targetItem unHTMLedTarget -- strip $ fromMaybe "" $ getTypeSig $ targetItem unHTMLedTarget
     docType' = strip $ fromMaybe "" $ getTypeOfTypeSig $ targetItem unHTMLedTarget
     package = maybe "" fst (targetPackage unHTMLedTarget)
 
 toJson :: Document -> LBS.ByteString
 toJson = A.encode
-
 -- cheap but enough to check whether targetItem is a type signature
 getTypeSig :: String -> Maybe String
 getTypeSig s = if isTypeSignature s then Just s else Nothing
@@ -76,3 +75,6 @@ normalize = stringToLower . concatMap (\l -> trimConsSpace l ++ " ") . lines
   where
     trimConsSpace = unwords . words
     stringToLower = map toLower
+
+degrees :: Floating x => x -> x
+degrees = undefined

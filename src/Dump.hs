@@ -17,7 +17,7 @@ import Control.Monad.Extra (findM)
 
 exportDatabaseAsJsonl :: IO ()
 exportDatabaseAsJsonl = do
-  let defaultName = "raw.complete.dump.jsonl"
+  let defaultName = "no-sig-check-raw.complete.dump.jsonl"
   let possibleNames = defaultName : map (\n -> "(" ++ show n ++ ")" ++ " " ++ defaultName) [1..]
   Just notTakenName <- findM (fmap not . doesFileExist) possibleNames
   dump database notTakenName asJson
